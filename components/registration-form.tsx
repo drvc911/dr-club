@@ -9,6 +9,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
+import {signNewUser} from "@/lib/server/actions/users.actions";
 
 export function RegistrationForm() {
   const router = useRouter()
@@ -55,7 +56,7 @@ export function RegistrationForm() {
       <div className="container mx-auto max-w-2xl">
         <Card className="bg-white p-6 rounded-lg shadow-lg">
           <CardHeader>
-            <CardTitle className="text-3xl font-bold text-[#4CBB17] text-center">Register Now</CardTitle>
+            <CardTitle className="text-3xl font-bold text-[#4CBB17] text-center">Contact Us Now</CardTitle>
             <CardDescription className="text-center">Join the DR Volleyball Club and take your game to the next level!</CardDescription>
           </CardHeader>
           <CardContent>
@@ -176,103 +177,17 @@ export function RegistrationForm() {
                   placeholder="Tell us about your volleyball experience..."
                 />
               </div>
-              <div className="space-y-2">
-                <Label>Payment Method</Label>
-                <RadioGroup onValueChange={(value) => handleSelectChange("paymentMethod", value)} required>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="credit" id="credit" />
-                    <Label htmlFor="credit">Credit Card</Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="debit" id="debit" />
-                    <Label htmlFor="debit">Debit Card</Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="paypal" id="paypal" />
-                    <Label htmlFor="paypal">PayPal</Label>
-                  </div>
-                </RadioGroup>
-              </div>
-              {(formData.paymentMethod === "credit" || formData.paymentMethod === "debit") && (
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="cardNumber">Card Number</Label>
-                    <Input
-                      id="cardNumber"
-                      name="cardNumber"
-                      value={formData.cardNumber}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="cardExpiration">Expiration Date</Label>
-                      <Input
-                        id="cardExpiration"
-                        name="cardExpiration"
-                        placeholder="MM/YY"
-                        value={formData.cardExpiration}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="cardCVC">CVC</Label>
-                      <Input
-                        id="cardCVC"
-                        name="cardCVC"
-                        value={formData.cardCVC}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="billingAddress">Billing Address</Label>
-                    <Input
-                      id="billingAddress"
-                      name="billingAddress"
-                      value={formData.billingAddress}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="billingCity">City</Label>
-                      <Input
-                        id="billingCity"
-                        name="billingCity"
-                        value={formData.billingCity}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="billingState">State</Label>
-                      <Input
-                        id="billingState"
-                        name="billingState"
-                        value={formData.billingState}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="billingZip">ZIP Code</Label>
-                    <Input
-                      id="billingZip"
-                      name="billingZip"
-                      value={formData.billingZip}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-                </div>
-              )}
-              <Button type="submit" className="w-full bg-[#4CBB17] text-white hover:bg-[#3DA614]">
+
+              <Button type="submit" className="w-full bg-[#4CBB17] text-white hover:bg-[#3DA614]" onClick={() => signNewUser({
+                fullName: `${formData.firstName} ${formData.lastName}`,
+                email: formData.email,
+                fullPlayerName: `${formData.playerFirstName} ${formData.playerLastName}`,
+                phoneNumber: formData.phone || 'N/A',
+                dob: formData.birthdate,
+                team: formData.team,
+                preferredPosition: formData.position,
+                experience: formData.experience
+              })}>
                 Submit Registration
               </Button>
             </form>

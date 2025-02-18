@@ -107,31 +107,14 @@ export function Navigation() {
                 CONTACT US
               </AnimatedButton>
             </div>
-            {user ? (
-              <div className="flex items-center space-x-2">
-                <AnimatedButton
-                  className="text-sm md:text-base px-2 md:px-4 py-1 md:py-2 text-[#4CBB17] border-[#4CBB17] hover:bg-[#4CBB17] hover:text-white"
-                  variant="outline"
-                  onClick={handleSignOut}
-                >
-                  SIGN OUT
-                </AnimatedButton>
-                <Avatar className="h-8 w-8 md:h-10 md:w-10">
-                  <AvatarFallback className="bg-[#4CBB17] text-white">
-                    {user.email[0].toUpperCase()}
-                  </AvatarFallback>
-                </Avatar>
-              </div>
-            ) : (
-              <Link href="/signin" passHref>
-                <AnimatedButton 
+            <Link href="/contact-form" passHref>
+              <AnimatedButton
                   className="text-sm md:text-base px-2 md:px-4 py-1 md:py-2 text-white bg-[#4CBB17] border-[#4CBB17] hover:bg-[#3DA614]"
                   variant="outline"
-                >
-                  SIGN IN
-                </AnimatedButton>
-              </Link>
-            )}
+              >
+                SUBSCRIBE
+              </AnimatedButton>
+            </Link>
           </div>
         </div>
       </div>

@@ -33,7 +33,7 @@ export function TeamPage({
             <p className="text-xl text-white/80 max-w-2xl mx-auto font-medium mb-6">
               {description}
             </p>
-            <Link href="/register" passHref>
+            <Link href="https://buy.stripe.com/4gweXsa7Y8QUdwcbII" passHref>
               <AnimatedButton className="bg-white text-[#4CBB17] hover:bg-[#F8F8F8] hover:text-[#3DA614] font-bold text-lg px-8 py-3">
                 Register Now
               </AnimatedButton>
