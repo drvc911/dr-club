@@ -12,9 +12,7 @@ import { AnimatedSection } from "./animated-section"
 import Link from "next/link";
 
 const tryoutDates = [
-  { date: "Coming Soon", time: "TBA", ageGroup: "10U & 11U" },
-  { date: "Coming Soon", time: "TBA", ageGroup: "14U & 16U" },
-  { date: "Coming Soon", time: "TBA", ageGroup: "18U" },
+  { date: "May 3rd, 2025", time: "9AM (Ages 9-10). 10AM (Ages 11-12)", ageGroup: "All" },
 ]
 
 export function Tryouts() {
